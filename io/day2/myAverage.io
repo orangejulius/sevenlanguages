@@ -1,11 +1,14 @@
 List myAverage := method(
-	return self sum / self size
+	if (self select(v, v proto != Number) size != 0,
+		Exception raise("list does not contain only numbers"),
+		self sum / self size
+	)
 )
 
-list := list (1, 2, 3)
+list1 := list (1, 2, 3)
 
-list myAverage println
+list1 myAverage println
 
-list2 := list ("abcd", 2, 4)
+list3 := list ("abcd", 2, 6)
 
-list2 myAverage println
+list3 myAverage println
