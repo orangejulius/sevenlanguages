@@ -20,11 +20,29 @@ List2d get := method(x, y,
 	self at(y) at(x)
 )
 
+List2d y_size := method(
+	self size
+)
+
+List2d x_size := method(
+	self at(0) size
+)
+
+List2d transpose := method(
+	new_list := List2d dim(self y_size, self x_size)
+	for (y, 0, x_size - 1,
+		for (x, 0, y_size - 1,
+			new_list set(x, y, get(y, x))
+		)
+	)
+	return new_list
+)
+
 l1 := List2d dim(3, 4)
-l1 println
 
 l1 set(2,2,2)
 l1 println
+"" println
 
-l1 get(2,2) println
-l1 get(1,2) println
+l2 := l1 transpose
+l2 println
