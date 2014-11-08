@@ -55,8 +55,23 @@ List2d save := method(filename,
 		)
 		f write("\n")
 	)
-
 	f close
+)
+
+List2d read := method(filename,
+	f := File with(filename)
+	f openForReading
+
+	l := List2d clone
+	while (f isAtEnd == false,
+		line := f readLine
+		if (line,
+			l2 := line split
+			l append(l2)
+		)
+	)
+
+	return l
 )
 
 l1 := List2d dim(3, 4)
@@ -69,3 +84,6 @@ l2 := l1 transpose
 l2 println
 
 l2 save("out.txt")
+
+l3 := List2d read("in.txt")
+l3 println
