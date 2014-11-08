@@ -38,6 +38,27 @@ List2d transpose := method(
 	return new_list
 )
 
+List2d save := method(filename,
+	"saving" println
+	f := File with(filename)
+	f remove
+	f openForUpdating
+
+	for(y, 0, y_size -1,
+		for(x, 0, x_size -1,
+			get(x,y) println
+			f write(get(x,y) asString)
+
+			if (x < x_size -1,
+				f write(" ")
+			)
+		)
+		f write("\n")
+	)
+
+	f close
+)
+
 l1 := List2d dim(3, 4)
 
 l1 set(2,2,2)
@@ -46,3 +67,5 @@ l1 println
 
 l2 := l1 transpose
 l2 println
+
+l2 save("out.txt")
