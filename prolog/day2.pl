@@ -24,21 +24,16 @@ my_list_min([H|T], ListMin) :-
 	my_min(H, TailMin, ListMin).
 
 sort_list([], []).
-
-sort_list([A, B], [A, B]) :-
-	A < B.
-
-sort_list([A, B], [B, A]) :-
-	B < A.
+sort_list([A], [A]).
 
 sort_list([H|T], SortedList) :-
-	T = [TH, TT],
+	T = [TH|_],
 	H < TH,
 	sort_list(T, SortedTail),
 	append([H], SortedTail, SortedList).
 
 sort_list([H|T], SortedList) :-
-	T = [TH, TT],
+	T = [TH| _],
 	H > TH,
 	sort_list(T, SortedTail),
 	append(SortedTail, [H], SortedList).
