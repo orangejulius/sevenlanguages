@@ -1,3 +1,5 @@
+% run with this command:
+% gprolog --consult-file day2.pl --entry-goal main
 my_reverse([], []).
 
 my_reverse( List, ReversedList) :-
