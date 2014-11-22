@@ -23,6 +23,26 @@ my_list_min([H|T], ListMin) :-
 	my_list_min(T, TailMin),
 	my_min(H, TailMin, ListMin).
 
+sort_list([], []).
+
+sort_list([A, B], [A, B]) :-
+	A < B.
+
+sort_list([A, B], [B, A]) :-
+	B < A.
+
+sort_list([H|T], SortedList) :-
+	T = [TH, TT],
+	H < TH,
+	sort_list(T, SortedTail),
+	append([H], SortedTail, SortedList).
+
+sort_list([H|T], SortedList) :-
+	T = [TH, TT],
+	H > TH,
+	sort_list(T, SortedTail),
+	append(SortedTail, [H], SortedList).
+
 main :-
 	my_reverse([], A),
 	write(A), nl,
@@ -56,5 +76,14 @@ main :-
 
 	my_list_min([-3, -5, 10, 0, 40], ListMinD),
 	write(ListMinD), nl,
+
+	sort_list([1, 2], SortedListA),
+	write(SortedListA), nl,
+
+	sort_list([5, 2], SortedListB),
+	write(SortedListB), nl,
+
+	sort_list([3, 2, 1], SortedListC),
+	write(SortedListC), nl,
 
 	halt.
