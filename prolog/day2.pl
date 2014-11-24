@@ -83,4 +83,9 @@ main :-
 	sort_list([3, 2, 1], SortedListC),
 	write(SortedListC), nl,
 
+	% oops, this sorting isnt quite right. see sorting.pl for
+	% multiple correct implementations
+	sort_list([8, 4, -2, -10, 4, 50, 200, 2], SortedListD),
+	write(SortedListD), nl,
+
 	halt.
