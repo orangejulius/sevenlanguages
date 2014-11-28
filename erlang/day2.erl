@@ -11,5 +11,11 @@ keyfinder(Key, List) ->
 start() ->
     io:fwrite("Erlang day 2\n"),
 	List = [{ruby, "OO language"}, {erlang, "functional language"}],
-	io:fwrite("~p\n", [keyfinder(ruby, List)]).
+	io:fwrite("~p\n", [keyfinder(ruby, List)]),
+    io:fwrite("\n\n"),
 
+	ProgrammersShoppingList = [{keyboard, 1, 150}, {laptop, 1, 1000}, {caffinated_beverage, 1000, 2}],
+	ProgrammersShoppingListPrices = [{Item, Quantity*Price} || {Item, Quantity, Price} <- ProgrammersShoppingList],
+	io:fwrite("~p\n", [ProgrammersShoppingListPrices]),
+
+	done.
